@@ -1,4 +1,4 @@
-# wokwi-ds1820-custom-chip
+# wokwi-ds1820-custom-chip 
 <img src="ds18b20.jpg" width="100" height="100"/>
 
 - [DS18B20 chip data sheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf)
