@@ -446,7 +446,7 @@ void chip_attr_init(chip_desc_t *chip) {
     attr = attr_init("debug_timer", false); chip->debug_timer = attr_read(attr) != 0;
 
     attr = attr_init_float("temperature", 0);
-    chip->temperature = constrain(attr_read_float(attr), MIN_TEMPERATURE, MAX_TEMPERATURE);
+    //chip->temperature = constrain(attr_read_float(attr), MIN_TEMPERATURE, MAX_TEMPERATURE);
     attr = attr_init_float("min_temp", MIN_TEMPERATURE);
     chip->min_temp = constrain(attr_read_float(attr), MIN_TEMPERATURE, MAX_TEMPERATURE);
     attr = attr_init_float("max_temp", MAX_TEMPERATURE);
@@ -588,10 +588,6 @@ static void chip_ready_for_next_cmd_byte(chip_desc_t *chip, chip_state_t state, 
 }
 
 static void chip_ready_for_next_cmd(chip_desc_t *chip) {
-    uint32_t attr;
-    // Read temperature from interface
-    attr = attr_init_float("temperature", 0);
-    chip->temperature = attr_read_float(attr);
     chip_ready_for_next_cmd_byte(chip, ST_WAIT_CMD, "rom");
 }
 static void chip_ready_for_next_func_cmd(chip_desc_t *chip) {
@@ -1036,6 +1032,10 @@ static void on_ds_convert(chip_desc_t *chip) {
     DEBUGF("on_ds_convert: scratch pad - : %s\n", debugHexStr(chip->scratch_pad, 9));
     int16_t tv;
     int16_t tv_frac;
+    uint32_t attr;
+    // Read temperature from interface
+    attr = attr_init_float("temperature", 0);
+    chip->temperature = attr_read_float(attr);
 
     // write our temp into the scratch pad, depending on family code. 
     switch (chip->serial_no[0]) {
