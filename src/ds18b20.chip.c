@@ -1034,8 +1034,8 @@ static void on_ds_convert(chip_desc_t *chip) {
     int16_t tv_frac;
     uint32_t attr;
     // Read temperature from interface
-    attr = attr_init_float("temperature", 0);
-    chip->temperature = attr_read_float(attr);
+    //attr = attr_init_float("temperature", 0);
+    chip->temperature = 3.0;
 
     // write our temp into the scratch pad, depending on family code. 
     switch (chip->serial_no[0]) {
