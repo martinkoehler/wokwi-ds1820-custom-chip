@@ -588,6 +588,7 @@ static void chip_ready_for_next_cmd_byte(chip_desc_t *chip, chip_state_t state, 
 }
 
 static void chip_ready_for_next_cmd(chip_desc_t *chip) {
+    uint32_t attr;
     // Read temperature from interface
     attr = attr_init_float("temperature", 0);
     chip->temperature = attr_read_float(attr);
