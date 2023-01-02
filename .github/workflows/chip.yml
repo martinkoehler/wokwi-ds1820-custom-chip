@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build chip
-      uses: bonnyr/wokwi-chip-clang-action@main
+      uses: martinkoehler/wokwi-chip-clang-action@main
     - name: 'Upload Artifacts'
       uses: actions/upload-artifact@v3
       with:
